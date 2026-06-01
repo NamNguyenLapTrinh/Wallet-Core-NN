@@ -1,0 +1,19 @@
+export class WalletError extends Error {
+  constructor(public code: string, message: string) {
+    super(message);
+    this.name = 'WalletError';
+  }
+}
+
+export const ERR = {
+  LOCKED: 'WALLET_LOCKED',
+  NOT_INITIALIZED: 'WALLET_NOT_INITIALIZED',
+  INVALID_MNEMONIC: 'INVALID_MNEMONIC',
+  INVALID_PRIVATE_KEY: 'INVALID_PRIVATE_KEY',
+  ACCOUNT_NOT_FOUND: 'ACCOUNT_NOT_FOUND',
+  WALLET_NOT_FOUND: 'WALLET_NOT_FOUND',
+  CHAIN_UNSUPPORTED: 'CHAIN_UNSUPPORTED',
+  KEYRING_TYPE_UNSUPPORTED: 'KEYRING_TYPE_UNSUPPORTED',
+  STORAGE_FAILURE: 'STORAGE_FAILURE',
+  AUTH_FAILED: 'AUTH_FAILED',
+} as const;

@@ -1,0 +1,24 @@
+# Nitrogen-generated sources. Either commit them so consumers don't need to
+# run the codegen, OR ignore them and ship a `prepare` script.
+# Default here: ignore. CI runs `pnpm nitrogen` before build.
+nitrogen/generated/
+
+# Build artefacts
+build/
+.cxx/
+DerivedData/
+Pods/
+node_modules/
+*.log
+.DS_Store
+
+# Vendored TrustWalletCore — these MUST be committed (that's the whole point
+# of vendoring: app build pulls nothing from the network). Listed here only
+# to document that the ignore rules above do NOT cover them.
+#
+# !ios/vendor/
+# !android/vendor/
+#
+# If you use git-lfs for large binaries:
+#   git lfs track "ios/vendor/**/*"
+#   git lfs track "android/vendor/**/*.so"

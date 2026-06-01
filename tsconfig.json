@@ -1,6 +1,9 @@
 {
   "extends": "@react-native/typescript-config",
   "compilerOptions": {
+    "paths": {
+      "wallet-manager-module": ["./wallet-manager-module/src/wallet/index.ts"]
+    },
     "types": ["jest"]
   },
   "include": ["**/*.ts", "**/*.tsx"],

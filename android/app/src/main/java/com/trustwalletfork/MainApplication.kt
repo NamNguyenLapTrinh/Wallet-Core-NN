@@ -6,6 +6,7 @@ import com.facebook.react.ReactApplication
 import com.facebook.react.ReactHost
 import com.facebook.react.ReactNativeApplicationEntryPoint.loadReactNative
 import com.facebook.react.defaults.DefaultReactHost.getDefaultReactHost
+import com.margelo.nitro.walletmgr.WalletManagerModuleOnLoad
 
 class MainApplication : Application(), ReactApplication {
 
@@ -22,6 +23,10 @@ class MainApplication : Application(), ReactApplication {
 
   override fun onCreate() {
     super.onCreate()
+    // Load the wallet-manager-module .so + register Nitro HybridObjects.
+    // Must run BEFORE React Native starts so JS calls to
+    // `NitroModules.createHybridObject('WalletCore')` find the registration.
+    WalletManagerModuleOnLoad.initializeNative()
     loadReactNative(this)
   }
 }

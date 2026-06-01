@@ -1,0 +1,42 @@
+{
+  "name": "wallet-manager-module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Wallet management layer wrapping Trust Wallet Core via Nitro Modules",
+  "main": "src/wallet/index.ts",
+  "module": "src/wallet/index.ts",
+  "types": "src/wallet/index.ts",
+  "react-native": "src/wallet/index.ts",
+  "source": "src/wallet/index.ts",
+  "files": [
+    "src",
+    "cpp",
+    "android",
+    "ios",
+    "nitrogen",
+    "scripts",
+    "SECURITY.md",
+    "VENDOR_PIN",
+    "README.md"
+  ],
+  "scripts": {
+    "nitrogen": "nitrogen src/specs",
+    "specs": "nitrogen src/specs",
+    "nitrogen:clean": "rm -rf nitrogen/generated",
+    "vendor:wallet-core": "bash scripts/build-wallet-core.sh",
+    "vendor:check": "test -d ios/vendor/WalletCoreCommon.xcframework && test -f android/vendor/arm64-v8a/libTrustWalletCore.so && cat VENDOR_PIN || (echo 'Missing vendor binaries — run: npm run vendor:wallet-core' && exit 1)",
+    "vendor:clean": "rm -rf ios/vendor android/vendor VENDOR_PIN",
+    "prepare": "npm run vendor:check || true"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*",
+    "react-native-keychain": "*",
+    "react-native-mmkv": "*",
+    "react-native-nitro-modules": "*",
+    "zustand": "*"
+  },
+  "devDependencies": {
+    "nitrogen": "^0.35.6"
+  }
+}
